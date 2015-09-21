@@ -8,15 +8,15 @@ gem 'rails-api'
 gem 'spring', :group => :development
 
 
-gem 'sqlite3'
+gem 'pg'
 
-
+gem 'responders', '~> 2.0'
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # To use Jbuilder templates for JSON
-# gem 'jbuilder'
+gem 'jbuilder'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -26,3 +26,11 @@ gem 'sqlite3'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+group :development, :test do
+  gem "factory_girl_rails", "~> 4.0"
+  gem 'pry-nav'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'spring-commands-rspec'
+end
