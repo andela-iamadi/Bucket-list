@@ -15,7 +15,6 @@ describe 'Items API', type: :controller do
     user = create(:user, full_name: "Chris");
     task = create(:item, user_id: user.id)
 
-    require 'pry-nav'; binding.pry
 
     get api_v1_user_items(user)
 
