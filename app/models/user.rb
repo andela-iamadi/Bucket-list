@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :items, dependent: :destroy
   has_many :lists, through: :items, dependent: :destroy
-  has_one :api_key, dependent: :destroy
+  has_many :api_keys, dependent: :destroy
   after_create :create_api_key
   has_secure_password
 
@@ -12,9 +12,19 @@ class User < ActiveRecord::Base
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }, allow_blank: true
-  private
 
   def create_api_key
     ApiKey.create :user_id => self.id
+  end
+
+  def active_api_key
+    ApiKey.where()
+  end
+
+  def deactivate_tokens
+    self.api_keys.each do |key|
+      key.active = false
+      key.save
+    end
   end
 end

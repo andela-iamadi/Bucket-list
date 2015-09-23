@@ -1,4 +1,6 @@
 class Api::V1::UsersController < ApplicationController
+  before_filter :restrict_access, :except => [:index]
+
   respond_to :json, :xml
 
   def index
@@ -14,10 +16,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    # user = User.includes(:items).find_by_id(params[:id])
-    @user = User.includes(:items).includes(:lists).find_by_id(params[:id])
-    # respond_with user.as_json(only:[:id, :full_name, :email, :created_at, :updated_at], include: [{items: {only: [:id, :name]}}])
-    # render "app/views/api/v1/user.json"
+    @user = User.includes(:lists).includes(:items).find_by_id(params[:id])
   end
 
   def update

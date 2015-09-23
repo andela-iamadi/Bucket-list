@@ -1,9 +1,9 @@
 class Api::V1::ItemsController < ApplicationController
+  before_filter :restrict_access
   respond_to :json, :xml
 
   def index
-    user = User.find_by(id: params[:user_id])
-    render  json: user.nil? ? "invalid user" : user.items.all
+    @items = @current_user.items.includes(:lists)
   end
 
   def new
@@ -11,20 +11,30 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    respond_with :api_v1, Item.create(Item_params)
+    @item = @current_user.items.create(item_params)
+    render partial: "api/v1/items/show"
   end
 
   def show
-    # respond_with Item.find(params[:id])
-    @user = User.includes(:items).includes(:lists).find_by_id(params[:id])
-    @items = @user.items
+    @item = @current_user.items.includes(:lists).find_by(id: params[:id])
+    render partial: "api/v1/items/show"
   end
 
   def update
-    respond_with :v1, Item.update(params[:id], Item_params)
+    @item = @current_user.items.includes(:lists).find_by(id: params[:id])
+    @item.update(item_params) if @item
+    render partial: "api/v1/items/show"
   end
 
-  def delete
-    respond_with Item.destroy(params[:id])
+  def destroy
+    @item = @current_user.items.find_by_id(params[:id])
+    @item.destroy if @item
+    redirect_to api_v1_items_path, status: 303
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name) if params.has_key? "item"
   end
 end
