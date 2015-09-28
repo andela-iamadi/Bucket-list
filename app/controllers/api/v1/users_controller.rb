@@ -1,6 +1,5 @@
 class Api::V1::UsersController < ApplicationController
   before_filter :restrict_access, :except => [:create]
-
   respond_to :json, :xml
 
   def index
@@ -12,9 +11,8 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def create
-    # respond_with :api_v1, User.create(user_params) if user_params
-    user = User.create(user_params) if user_params
-    render json: user
+    @user = User.create(user_params) if user_params
+    render template: "api/v1/users/show.json"
   end
 
   def show

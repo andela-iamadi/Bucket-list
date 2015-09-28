@@ -6,5 +6,5 @@ if @lists && !@lists.empty?
     json.errors @list.errors.messages
   end
 else
-  json.error "invalid list"
+  json.error "List is empty or doesn't exist"
 end

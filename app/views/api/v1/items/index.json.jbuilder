@@ -6,5 +6,5 @@ json.cache! ['v1', @items] do
     json.errors @item.errors.messages
   end
 else
-  json.error "invalid item"
+  json.error "There are no items or the items specified are invalid."
 end

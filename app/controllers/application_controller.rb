@@ -3,7 +3,7 @@ include ActionController::MimeResponds
 
 class ApplicationController < ActionController::API
   rescue_from ActionController::RoutingError, :with => :render_not_found
-  rescue_from StandardError, :with => :render_server_error
+  # rescue_from StandardError, :with => :render_server_error
 
   include ActionController::ImplicitRender
   include ActionController::Helpers
