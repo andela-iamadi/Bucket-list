@@ -236,20 +236,20 @@ If successful, the API returns a single bucket list as shown below:
 **Retrieve a single bucketlist**
 
 You can retrieve a single bucketlist, along with its associated items by sending a GET request to
-https://bucket-lists.herokuapp.com/api/v1/lists/<:id>
+https://bucket-lists.herokuapp.com/api/v1/lists/:id
 Where **<:id>** represents the id of the list.
 
 
 **Edit an existing bucketlist**
 
-To edit an existing bucketlist, send a PATCH request to https://bucket-lists.herokuapp.com/api/v1/lists/<:id> where ****:id**** is the id of the target bucketlist.
+To edit an existing bucketlist, send a PATCH request to https://bucket-lists.herokuapp.com/api/v1/lists/:id where ****:id**** is the id of the target bucketlist.
 
 The API returns a JSON of the edited bucketlist in similar style with the **create** method.
 
 
 **Delete an existing bucketlist**
 
-To delete an existing bucketlist, send a DELETE request to https://bucket-lists.herokuapp.com/api/v1/lists/<:id> where <:id> is the id of the target bucketlist.
+To delete an existing bucketlist, send a DELETE request to https://bucket-lists.herokuapp.com/api/v1/lists/:id where <:id> is the id of the target bucketlist.
 
 The API returns a JSON of the edited bucketlist in similar style with the **index** method, but with the deleted bucketlist missing.
 
