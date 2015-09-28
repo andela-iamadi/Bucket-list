@@ -94,7 +94,7 @@ At a glance, the API exposed ends are:
 
 A user can log into the bucketlist app by sending a POST request to https://bucket-lists.herokuapp.com/api/v1/users.
 The API expects the following in the incoming JSON request:
->>>
+```
   {
     user: {
       full_name: "John Doe",
@@ -103,14 +103,14 @@ The API expects the following in the incoming JSON request:
       password_confirmation: "password"
     }
   }
->>>
+```
 
 The password is expected to be at least 6 characters and the email should be valid.
 
 If successful, this request creates a new user and returns the details of the newly created user in.
 
 The response received is in the following format:
->>>
+```
 {
   "id": 2,
   "full_name": "John Doe",
@@ -119,7 +119,7 @@ The response received is in the following format:
   "date_updated": "2015-09-28T11:26:08.262Z",
   "created_by": "John Doe"
 }
->>>
+```
 
 
 *AUTHENTICATION*
@@ -133,14 +133,14 @@ Most operations on the API requires the incoming request comes with a user token
 To log in a user, send the user email and password to https://bucket-lists.herokuapp.com/api/v1/auth/login.
 
 So to log in our infamous user *John Doe*, the JSON request should be similar to:
->>>
+```
   {
     auth: {
       email: "john.doe@gmail.com",
       password: "password",
     }
   }
->>>
+```
 
 The request received would be similar to:
 
@@ -183,7 +183,7 @@ To delete a user information, send a DELETE request to https://bucket-lists.hero
 To show all bucketlists a user has created, send a GET request to https://bucket-lists.herokuapp.com/api/v1/lists.
 
 The API returns an array of lists created by the user together with their associated items as shown below:
->>>
+```
 {
   "lists": [
     {
@@ -215,14 +215,14 @@ The API returns an array of lists created by the user together with their associ
     }
   ]
 }
->>>
+```
 
 *Create a new bucketlist*
 
 To create a new bucketlist, send a POST request to https://bucket-lists.herokuapp.com/api/v1/lists.
 
 If successful, the API returns a single bucket list as shown below:
->>>
+```
 {
   "id": 2,
   "name": "Finish API app",
@@ -230,7 +230,7 @@ If successful, the API returns a single bucket list as shown below:
   "updated_at": "2015-09-28T13:25:53.625Z",
   "created_by": "John Doe"
 }
->>>
+```
 
 *Retrieve a single bucketlist*
 
@@ -260,7 +260,7 @@ where *<:list_id>* represents the id of the bucketlist.
 
 This will return an array of items belonging to the bucketlist as below:
 
->>>
+```
 {
   "items": [
     {
@@ -279,7 +279,7 @@ This will return an array of items belonging to the bucketlist as below:
     }
   ]
 }
->>>
+```
 
 *Adding a new item to a bucket list*
 
@@ -289,7 +289,7 @@ where *<:list_id>* represents the id of the bucketlist the item would belong.
 
 This operation will return the single item if successful.
 
->>>
+```
 {
   "id": 5,
   "name": "Prepare API documentation",
@@ -297,7 +297,7 @@ This operation will return the single item if successful.
   "updated_at": "2015-09-28T14:59:58.738Z",
   "list": "Getting ready for today's work"
 }
->>>
+```
 
 *Editing a bucketlist item*
 
