@@ -8,6 +8,88 @@ A bucketlist can be likened to a todo-list where bucketlist items can have tasks
 
 By default, all responses of this API is in JSON format.
 
+At a glance, the API exposed ends are:
+
+
+<table>
+  <thead>
+    <tr>
+      <td>
+        EndPoint
+      </td>
+      <td>
+        Public Access
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        POST /api/v1/auth/login
+      </td>
+      <td>
+        TRUE
+      </td>
+    </tr>
+    <tr>
+      <td>
+        GET /api/v1/auth/logout
+      </td>
+      <td>
+        FALSE
+      </td>
+    </tr>
+    <tr>
+      <td>
+        POST /api/v1/bucketlists/
+      </td>
+      <td>
+        FALSE
+      </td>
+    </tr>
+    <tr>
+      <td>
+        GET /api/v1/bucketlists/
+      </td>
+      <td>
+        TRUE
+      </td>
+    </tr>
+    <tr>
+      <td>
+        GET /api/v1/bucketlists/<id>
+      </td>
+      <td>
+        FALSE
+      </td>
+    </tr>
+    <tr>
+      <td>
+        POST /api/v1/bucketlists/<id>
+      </td>
+      <td>
+        FALSE
+      </td>
+    </tr>
+    <tr>
+      <td>
+        PUT /api/v1/bucketlists/<id>
+      </td>
+      <td>
+        FALSE
+      </td>
+    </tr>
+    <tr>
+      <td>
+        DELETE /api/v1/bucketlists/<id>
+      </td>
+      <td>
+        FALSE
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 > *Creating a user*
 
 A user can log into the bucketlist app by sending a POST request to https://bucket-lists.herokuapp.com/api/v1/users.

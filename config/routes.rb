@@ -14,14 +14,14 @@ Rails.application.routes.draw do
   put "/api/v1/users" => "api/v1/users#update", defaults: {format: 'json'}
   delete "/api/v1/users" => "api/v1/users#delete", defaults: {format: 'json'}
 
-  # get "/api/v1/bucketitems" => "api/v1/lists#index"
-  # post "/api/v1/bucketitems" => "api/v1/lists#create"
-  # get "/api/v1/bucketitems/:id" => "api/v1/lists#show"
-  # post "/api/v1/bucketitems/:id" => "api/v1/item#create"
-  # put "/api/v1/bucketitems/:id" => "api/v1/item#update"
-  # patch "/api/v1/bucketitems/:id" => "api/v1/item#update"
-  # delete "/api/v1/bucketitems/:id" => "api/v1/item#delete"
-  # delete "/api/v1/bucketitems/:id/list/:id" => "api/v1/item#delete"
+  get "/api/v1/bucketlists" => "api/v1/lists#index"
+  post "/api/v1/bucketlists" => "api/v1/lists#create"
+  get "/api/v1/bucketlists/:id" => "api/v1/lists#show"
+  post "/api/v1/bucketlists/:id" => "api/v1/item#create"
+  put "/api/v1/bucketlists/:id" => "api/v1/item#update"
+  patch "/api/v1/bucketlists/:id" => "api/v1/item#update"
+  delete "/api/v1/bucketlists/:id" => "api/v1/item#delete"
+  delete "/api/v1/bucketlists/:id/list/:id" => "api/v1/item#delete"
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
