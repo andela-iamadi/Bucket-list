@@ -16,4 +16,4 @@
 # Using secret_token for rails3 compatibility. Change to secret_key_base
 # to avoid deprecation warning.
 # Can be safely removed in a rails3 api-only application.
-Bucketlist::Application.config.secret_token = '0aebe57f18cc0281df36d90234ef6eed213e8a791a98027b9c005dad302d2057c6b2566e4db56541b9d05f14f5c54634a48bbfe2c5c9506fc928570e06a54c26'
+Bucketitem::Application.config.secret_token = '0aebe57f18cc0281df36d90234ef6eed213e8a791a98027b9c005dad302d2057c6b2566e4db56541b9d05f14f5c54634a48bbfe2c5c9506fc928570e06a54c26'

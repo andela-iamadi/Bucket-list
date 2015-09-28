@@ -1,30 +1,34 @@
 class Api::V1::UsersController < ApplicationController
-  before_filter :restrict_access, :except => [:index]
+  before_filter :restrict_access, :except => [:create]
 
   respond_to :json, :xml
 
   def index
-    respond_with User.all
+    @user = @current_user.includes(:lists).includes(:items)
   end
 
   def new
-    respond_with User.find(params[:id])
+    respond_with User.new
   end
 
   def create
-    respond_with :api_v1, User.create(user_params)
+    # respond_with :api_v1, User.create(user_params) if user_params
+    user = User.create(user_params) if user_params
+    render json: user
   end
 
   def show
-    @user = User.includes(:lists).includes(:items).find_by_id(params[:id])
+    @user = User.includes(:lists).includes(:items).find_by_id(@current_user.id)
   end
 
   def update
-    respond_with :api_v1, User.update(params[:id], user_params)
+    @current_user.update(user_params) if user_params
+    render json: @current_user
   end
 
   def delete
-    respond_with User.destroy(params[:id])
+    @current_user.delete
+    render json: { message: "User successfully deleted" }
   end
 
   private

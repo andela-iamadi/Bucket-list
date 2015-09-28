@@ -2,9 +2,13 @@ include ActionController::HttpAuthentication::Token::ControllerMethods
 include ActionController::MimeResponds
 
 class ApplicationController < ActionController::API
+  rescue_from ActionController::RoutingError, :with => :render_not_found
+  rescue_from StandardError, :with => :render_server_error
+
   include ActionController::ImplicitRender
   include ActionController::Helpers
   include ActionController::Caching
+
 
   private
 
@@ -34,5 +38,14 @@ class ApplicationController < ActionController::API
 
   def unauthorized!
     render json: {message: 'Not Authorized'}, status: 401
+  end
+
+
+  def render_not_found
+    render json: {message: 'Oops. Request not found.'}, status: 404
+  end
+
+  def render_server_error
+     render json: {message: 'Oops. An error occured. Please try again.'}, status: 500
   end
 end

@@ -30,18 +30,18 @@ ActiveRecord::Schema.define(version: 20150921143414) do
 
   create_table "items", force: :cascade do |t|
     t.string   "name"
-    t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "lists_count", default: 0
+    t.boolean  "done"
+    t.integer  "list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "lists", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "done"
-    t.integer  "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "items_count", default: 0
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20150921143414) do
     t.string   "role",            default: "user"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
-    t.integer  "items_count",     default: 0
+    t.integer  "lists_count",     default: 0
     t.string   "password_digest"
   end
 

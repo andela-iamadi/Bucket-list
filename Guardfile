@@ -45,6 +45,13 @@ guard :rspec, cmd: "bundle exec rspec" do
   dsl.watch_spec_files_for(rails.app_files)
   dsl.watch_spec_files_for(rails.views)
 
+  APP_ROOT = Pathname.new(File.expand_path('../', __FILE__))
+  controllers = Dir[APP_ROOT.join('app', 'controllers', 'api', 'v1', '*.rb')]
+
+  controllers.each do |controller|
+    watch(controller) { "#{rspec.spec_dir}/controllers" }
+  end
+
   watch(rails.controllers) do |m|
     [
       rspec.spec.("routing/#{m[1]}_routing"),

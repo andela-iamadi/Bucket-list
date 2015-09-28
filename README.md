@@ -1,2 +1,2 @@
-# Bucket-list
-An app that gets a bucket list of todo items
+# Bucket-item
+An app that gets a bucket item of todo lists

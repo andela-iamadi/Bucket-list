@@ -1,7 +1,7 @@
 if @user
   json.cache! ['v1', @user] do
     json.(@user, :id, :full_name, :email)
-    json.items @user.items, partial: 'api/v1/items/show_items', as: :item
+    json.lists @user.lists, partial: 'api/v1/lists/show', as: :list unless @user.lists.empty?
     json.date_created @user.created_at
     json.date_updated @user.updated_at
     json.created_by @user.full_name

@@ -9,14 +9,6 @@ class ApiKey < ActiveRecord::Base
     DateTime.now >= self.expires_at
   end
 
-  private
-
-  def generate_token
-    begin
-      self.token = SecureRandom.hex.to_s
-    end while self.class.exists?(token: token)
-  end
-
   def set_expiration
     self.expires_at = DateTime.now+5
   end
@@ -27,5 +19,13 @@ class ApiKey < ActiveRecord::Base
 
   def deactivate
     self.active = false
+  end
+
+  private
+
+  def generate_token
+    begin
+      self.token = SecureRandom.hex.to_s
+    end while self.class.exists?(token: token)
   end
 end

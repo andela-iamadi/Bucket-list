@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :items, dependent: :destroy
-  has_many :lists, through: :items, dependent: :destroy
+  has_many :lists, dependent: :destroy
+  has_many :items, through: :lists, dependent: :destroy
   has_many :api_keys, dependent: :destroy
   after_create :create_api_key
   has_secure_password
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def active_api_key
-    ApiKey.where()
+    api_keys.valid_tokens.first
   end
 
   def deactivate_tokens
