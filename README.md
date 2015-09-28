@@ -15,10 +15,10 @@ At a glance, the API exposed ends are:
   <thead>
     <tr>
       <td>
-        EndPoint
+        **EndPoint**
       </td>
       <td>
-        Public Access
+        **Public Access**
       </td>
     </tr>
   </thead>
@@ -90,7 +90,8 @@ At a glance, the API exposed ends are:
   </tbody>
 </table>
 
-> *Creating a user*
+
+**Creating a user**
 
 A user can log into the bucketlist app by sending a POST request to https://bucket-lists.herokuapp.com/api/v1/users.
 The API expects the following in the incoming JSON request:
@@ -122,11 +123,11 @@ The response received is in the following format:
 ```
 
 
-*AUTHENTICATION*
+**AUTHENTICATION**
 
 Apart from creating a user and logging in, every other route on *bucketlist-api* requires you to supply a token. This token can be gotten when you log in.
 
-*Logging in a user*
+**Logging in a user**
 
 Most operations on the API requires the incoming request comes with a user token. This is the same token gotten when a user logs in.
 
@@ -146,39 +147,39 @@ The request received would be similar to:
 
 > { "token": "31b7866c82b12a0e63d0718963b3e628"}
 
-*Logging out a user*
+**Logging out a user**
 
 To log out a user, send a GET request to https://bucket-lists.herokuapp.com/api/v1/auth/logout.
 
 After logging out, your old token would no longer be valid. To receive a new token, you would have to log in again.
 
 
-*OTHER USER OPERATIONS*
+**OTHER USER OPERATIONS**
 
 Once a user has been created, you can show, update or delete the user. In all cases, you are expected to supply a token (in the HTTP request header or as a parameter). This token is the same gotten when the user logs in.
 
 
 
 
-*Show a user information*
+**Show a user information**
 
 To retrieve a user information at any time, send a GET request to https://bucket-lists.herokuapp.com/api/v1/users.
 
 The JSON response is similar to that returned when a user is created.
 
-*Update a user information*
+**Update a user information**
 
 To retrieve a user information at any time, send a PATCH or PUT request to https://bucket-lists.herokuapp.com/api/v1/users.
 
 The JSON response is also similar to that returned when a user is created.
 
-*Delete a user information*
+**Delete a user information**
 
 To delete a user information, send a DELETE request to https://bucket-lists.herokuapp.com/api/v1/users.
 
-> **NOTE: All operations henceforth requires you to supply a token**
+> ****NOTE: All operations henceforth requires you to supply a token****
 
-*List All Bucketlist for a logged in user*
+**List All Bucketlist for a logged in user**
 
 To show all bucketlists a user has created, send a GET request to https://bucket-lists.herokuapp.com/api/v1/lists.
 
@@ -217,7 +218,7 @@ The API returns an array of lists created by the user together with their associ
 }
 ```
 
-*Create a new bucketlist*
+**Create a new bucketlist**
 
 To create a new bucketlist, send a POST request to https://bucket-lists.herokuapp.com/api/v1/lists.
 
@@ -232,31 +233,31 @@ If successful, the API returns a single bucket list as shown below:
 }
 ```
 
-*Retrieve a single bucketlist*
+**Retrieve a single bucketlist**
 
 You can retrieve a single bucketlist, along with its associated items by sending a GET request to
 https://bucket-lists.herokuapp.com/api/v1/lists/<:id>
-Where *<:id>* represents the id of the list.
+Where **<:id>** represents the id of the list.
 
 
-*Edit an existing bucketlist*
+**Edit an existing bucketlist**
 
-To edit an existing bucketlist, send a PATCH request to https://bucket-lists.herokuapp.com/api/v1/lists/<:id> where <:id> is the id of the target bucketlist.
+To edit an existing bucketlist, send a PATCH request to https://bucket-lists.herokuapp.com/api/v1/lists/<:id> where ****:id**** is the id of the target bucketlist.
 
-The API returns a JSON of the edited bucketlist in similar style with the *create* method.
+The API returns a JSON of the edited bucketlist in similar style with the **create** method.
 
 
-*Delete an existing bucketlist*
+**Delete an existing bucketlist**
 
 To delete an existing bucketlist, send a DELETE request to https://bucket-lists.herokuapp.com/api/v1/lists/<:id> where <:id> is the id of the target bucketlist.
 
-The API returns a JSON of the edited bucketlist in similar style with the *index* method, but with the deleted bucketlist missing.
+The API returns a JSON of the edited bucketlist in similar style with the **index** method, but with the deleted bucketlist missing.
 
-*Retrieving only items belonging to a bucketlist*
+**Retrieving only items belonging to a bucketlist**
 
-To retrieve only items in a bucketlist, send a GET request to https://bucket-lists.herokuapp.com/api/v1/lists/<:list_id>/items
+To retrieve only items in a bucketlist, send a GET request to https://bucket-lists.herokuapp.com/api/v1/lists/:list_id/items
 
-where *<:list_id>* represents the id of the bucketlist.
+where **<:list_id>** represents the id of the bucketlist.
 
 This will return an array of items belonging to the bucketlist as below:
 
@@ -281,11 +282,11 @@ This will return an array of items belonging to the bucketlist as below:
 }
 ```
 
-*Adding a new item to a bucket list*
+**Adding a new item to a bucket list**
 
-To add a new item to the bucketlist, send a POST request to https://bucket-lists.herokuapp.com/api/v1/lists/<:list_id>/items
+To add a new item to the bucketlist, send a POST request to https://bucket-lists.herokuapp.com/api/v1/lists/:list_id/items
 
-where *<:list_id>* represents the id of the bucketlist the item would belong.
+where **<:list_id>** represents the id of the bucketlist the item would belong.
 
 This operation will return the single item if successful.
 
@@ -299,9 +300,9 @@ This operation will return the single item if successful.
 }
 ```
 
-*Editing a bucketlist item*
+**Editing a bucketlist item**
 
-To edit a bucketlist item, send a PATCH or PUT request to https://bucket-lists.herokuapp.com/api/v1/lists/<:list_id>/items/<:item_id>
+To edit a bucketlist item, send a PATCH or PUT request to https://bucket-lists.herokuapp.com/api/v1/lists/:list_id/items/:item_id
 
 where :
 > <:list_id> => id of the bucketlist
@@ -313,8 +314,8 @@ The only parameter that can be edited is the name of the item, so your request s
 
 If successful, the item is returned as JSON with the changes reflecting.
 
-*Deleting a bucketlist item*
+**Deleting a bucketlist item**
 
-To delete a bucketlist item, send a DELETE request to https://bucket-lists.herokuapp.com/api/v1/lists/<:list_id>/items/<:item_id>
+To delete a bucketlist item, send a DELETE request to https://bucket-lists.herokuapp.com/api/v1/lists/:list_id/items/:item_id
 
 If successful, the API returns all items in the bucketlist with the deleted item absent from it.
